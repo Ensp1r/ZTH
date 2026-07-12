@@ -1,0 +1,69 @@
+:root {
+    --white: white;
+    
+    --bg-primary: #FFFFFF;
+    --bg-secondary: #F5F6F8; 
+    --text-primary: #3B434E; 
+    --text-secondary: #6c7077;
+
+    --green-light: #C8F8E4;
+    --accent-blue: #1219F3;
+    --accent-blue-hover: #0C11CC;
+
+    --red-light: #fea291;
+    --red: #FC836D;
+    --dark-red: #ef2c2c;
+    --green: #007c49;
+    --green-light: #C8F8E4;
+
+    --border-color: #EBEBEB; /* Твой --gray-light */
+    --card-bg: #FFFFFF;
+    --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.05);
+    --radius: 12px;
+    
+    --font-family: "Noto Sans", sans-serif;
+    --transition: all 0.3s ease;
+}
+
+[data-theme="dark"] {
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #1A1A1A;
+    --text-primary: #ededed;
+    --text-secondary: #A4A4A4; 
+    
+    --border-color: #333333;
+    --card-bg: #1E1E1E;
+    --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --bg-primary: #0a0a0a;
+        --bg-secondary: #1A1A1A;
+        --text-primary: #ededed;
+        --text-secondary: #A4A4A4;
+        --border-color: #333333;
+        --card-bg: #1E1E1E;
+    }
+}
+
+html,
+body {
+    font-family: "Noto Sans", sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--black); 
+    background-color: var(--bg-primary);
+}
+
+a { 
+    text-decoration: none; 
+    color: inherit; 
+}
+
+button { 
+    font-family: inherit; 
+    cursor: pointer; 
+    border: none; 
+    outline: none; 
+}
