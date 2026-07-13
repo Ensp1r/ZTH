@@ -3,12 +3,12 @@
     
     --bg-primary: #FFFFFF;
     --bg-secondary: #F5F6F8; 
-    --text-primary: #3B434E; 
+    --text-primary: #171819; 
     --text-secondary: #6c7077;
 
     --green-light: #C8F8E4;
-    --accent-blue: #1219F3;
-    --accent-blue-hover: #0C11CC;
+    --primary: #1219F3;
+    --primary-hover: #0C11CC;
 
     --red-light: #fea291;
     --red: #FC836D;
@@ -52,7 +52,7 @@ body {
     font-family: "Noto Sans", sans-serif;
     margin: 0;
     padding: 0;
-    color: var(--black); 
+    color: var(--text-primary); 
     background-color: var(--bg-primary);
 }
 

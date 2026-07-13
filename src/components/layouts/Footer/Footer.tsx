@@ -108,6 +108,10 @@ export const Footer = (): JSX.Element => {
             <a href="#" className={styles.bottomLink}>Оферта</a>
           </div>
         </div>
+
+        <div className={styles.watermarkWrapper}>
+          <div className={styles.watermark}>100</div>
+        </div>
       </div>
     </footer>
   );
