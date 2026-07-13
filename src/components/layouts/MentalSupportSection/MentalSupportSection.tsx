@@ -1,4 +1,6 @@
+import PsychoSupport from '../../../assets/images/psychologist_session_support.png';
 import styles from './MentalSupportSection.module.css';
+
 
 export const MentalSupportSection = () => {
   return (
@@ -10,7 +12,7 @@ export const MentalSupportSection = () => {
             <div className={styles.imageFrame}>
               <div style={{ overflow: 'hidden' }}>
                 <img
-                  src="/images/psychologist_session_support.png"
+                  src={PsychoSupport}
                   alt="Анонимная психологическая поддержка для учеников"
                   loading="lazy"
                   className={styles.image}
