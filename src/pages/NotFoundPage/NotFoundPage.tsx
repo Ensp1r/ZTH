@@ -15,7 +15,7 @@ export const NotFoundPage = () => {
           </div>
 
           <p className={styles.description}>
-            Did you forget to add the page to the router?
+            Мы не смогли найти такую страницу. Попробуйте позже
           </p>
         </CardContent>
       </Card>

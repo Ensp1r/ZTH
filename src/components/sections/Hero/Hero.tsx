@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import heroImage from '../../../assets/images/student_learning_online.webp';
-import styles from './HeroSection.module.css';
+import styles from './Hero.module.css';
 
 
 const tickerItems = [
@@ -17,7 +17,7 @@ const stats = [
   'Родительский контроль',
 ];
 
-export const HeroSection = () => {
+export const Hero = () => {
   return (
     <section id="путь-к-сотке" className={styles.hero}>
       <div className={styles.grid}>

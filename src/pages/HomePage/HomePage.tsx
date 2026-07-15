@@ -1,4 +1,6 @@
-import { EcosystemSection, Footer, HeroSection, MentalSupportSection } from "../../components/layouts"
+import { Footer } from "../../components/layouts"
+import { Ecosystem, Hero, MentalSupport, Mentors, Pricing, Testimonials, Trial } from "../../components/sections"
+
 
 
 
@@ -6,9 +8,13 @@ export const HomePage = () => {
     return (
         <>
             <main>
-                <HeroSection />
-                <EcosystemSection />
-                <MentalSupportSection />
+                <Hero />
+                <Ecosystem />
+                <Trial />
+                <Mentors />
+                <Pricing />
+                <Testimonials />
+                <MentalSupport />
             </main>
             <Footer />
         </>

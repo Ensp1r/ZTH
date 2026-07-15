@@ -1,8 +1,8 @@
 import PsychoSupport from '../../../assets/images/psychologist_session_support.png';
-import styles from './MentalSupportSection.module.css';
+import styles from './MentalSupport.module.css';
 
 
-export const MentalSupportSection = () => {
+export const MentalSupport = () => {
   return (
     <section id="ментальная-поддержка" className={styles.section}>
       <div className={styles.inner}>

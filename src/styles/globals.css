@@ -55,7 +55,27 @@
     --transition: all 0.3s ease;
 }
 
+[data-theme="dark"] {
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #1A1A1A;
+    --text-primary: #ededed;
+    --text-secondary: #A4A4A4; 
+    
+    --border-color: #333333;
+    --card-bg: #1E1E1E;
+    --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
 
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --bg-primary: #0a0a0a;
+        --bg-secondary: #1A1A1A;
+        --text-primary: #ededed;
+        --text-secondary: #A4A4A4;
+        --border-color: #333333;
+        --card-bg: #1E1E1E;
+    }
+}
 
 html,
 body {

@@ -1,7 +1,7 @@
 import { Award, Brain, GraduationCap, ShieldCheck, Target, Users } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import styles from './EcosystemSection.module.css';
+import styles from './Ecosystem.module.css';
 
 
 const features = [
@@ -16,7 +16,7 @@ const features = [
 const baseWords = ['МАТЕМАТИКА', 'ФИЗИКА', 'ИНФОРМАТИКА', 'РУССКИЙ ЯЗЫК'];
 const tickerWords = [...baseWords, ...baseWords, ...baseWords, ...baseWords];
 
-export const EcosystemSection = () => {
+export const Ecosystem = () => {
   const leftRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<(HTMLLIElement | null)[]>([]);
 
@@ -24,7 +24,7 @@ export const EcosystemSection = () => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          (entry.target as HTMLElement).style.cssText = 'opacity:1;transform:translateY(0)';
+          entry.target.classList.add(styles.visible);;
           observer.unobserve(entry.target);
         }
       });
@@ -59,8 +59,7 @@ export const EcosystemSection = () => {
           <div className={styles.leftCol}>
             <div
               ref={leftRef}
-              className={styles.stickyWrap}
-              style={{ opacity: 0, transform: 'translateY(24px)', transition: 'opacity 0.7s ease-out, transform 0.7s ease-out' }}
+              className={`${styles.stickyWrap} ${styles.reveal}`}  
             >
               <div className={styles.bg100} aria-hidden="true">100</div>
               <p className={styles.eyebrow}>§ 01 · ЭКОСИСТЕМА ОБУЧЕНИЯ</p>
@@ -87,8 +86,8 @@ export const EcosystemSection = () => {
                   <li
                     key={f.num}
                     ref={el => { itemRefs.current[i] = el; }}
-                    className={`${styles.listItem} ${i > 0 ? styles.listItemBorder : ''}`}
-                    style={{ opacity: 0, transform: 'translateY(24px)', transition: `opacity 0.7s ease-out ${i * 90}ms, transform 0.7s ease-out ${i * 90}ms` }}
+                    className={`${styles.listItem} ${i > 0 ? styles.listItemBorder : ''} ${styles.reveal}`}
+                    style={{ transitionDelay: `${i * 90}ms` }}
                   >
                     <div className={styles.itemMeta}>
                       <span className={styles.itemNum}>{f.num}</span>
