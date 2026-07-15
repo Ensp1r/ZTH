@@ -1,140 +1,152 @@
+import { Plus } from 'lucide-react';
+import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './PricingPage.module.css';
 
 const tiers = [
   {
-    tierLabel: 'TIER 01 · START',
-    title: 'Базовый',
-    price: '2 990',
-    duration: '3 МЕСЯЦА · ОНЛАЙН',
-    badge: 'Доступно',
-    badgeStyle: 'badgeDefault' as const,
-    cardStyle: '' as const,
-    btnStyle: 'cardBtnDefault' as const,
+    tier: 'ТАРИФ 01',
+    name: 'БАЗОВЫЙ',
+    sub: 'Для уверенного старта',
+    price: '2990',
+    unit: '₽/мес',
+    featured: false,
+    popular: false,
     features: [
-      'Доступ к видеолекциям',
-      'Базовые домашние задания',
+      'Доступ к платформе 24/7',
+      'Базовые видеоуроки по ЕГЭ',
+      'Автоматическая проверка тестов',
       'Чат с наставником',
-      'Еженедельные тесты',
-      'Проверка ошибок',
+      'Доступ к базе знаний',
     ],
+    btnText: 'Выбрать →',
+    btnClass: 'outline',
   },
   {
-    tierLabel: 'TIER 02 · PRO',
-    title: 'Продвинутый',
-    price: '4 990',
-    duration: '6 МЕСЯЦЕВ · ОНЛАЙН',
-    badge: 'Популярно',
-    badgeStyle: 'badgeFeatured' as const,
-    cardStyle: 'cardFeatured' as const,
-    btnStyle: 'cardBtnFeatured' as const,
+    tier: 'ТАРИФ 02',
+    name: 'ПРОДВИНУТЫЙ',
+    sub: 'Для максимального результата',
+    price: '4990',
+    unit: '₽/мес',
+    featured: true,
+    popular: true,
     features: [
-      'Все материалы базового',
-      'Личный куратор из МГУ',
-      'Разбор сложных задач',
-      'Индивидуальный план',
-      'Психологическая поддержка',
-      'Пробные ЕГЭ ежемесячно',
-      'Приоритетная поддержка',
+      'Все возможности Базового',
+      'Личный куратор из топ-вуза',
+      'Проверка домашних заданий',
+      'Геймификация и кланы',
+      'Анонимная поддержка психолога',
+      'Родительский контроль',
     ],
+    btnText: 'Выбрать — Популярно →',
+    btnClass: 'primary',
   },
   {
-    tierLabel: 'TIER 03 · ELITE',
-    title: 'Премиум',
-    price: '7 990',
-    duration: '9 МЕСЯЦЕВ · ОНЛАЙН',
-    badge: 'Премиум',
-    badgeStyle: 'badgePremium' as const,
-    cardStyle: '' as const,
-    btnStyle: 'cardBtnPremium' as const,
+    tier: 'ТАРИФ 03',
+    name: 'ПРЕМИУМ',
+    sub: 'Индивидуальный подход',
+    price: '7990',
+    unit: '₽/мес',
+    featured: false,
+    popular: false,
     features: [
-      'Полное сопровождение',
-      'Личный ментор 24/7',
+      'Все возможности Продвинутого',
+      'Индивидуальные созвоны',
+      'Разбор сложных тем 1 на 1',
       'Помощь с поступлением',
-      'Профиль для родителей',
-      'Закрытые вебинары',
-      'Три пробных ЕГЭ в месяц',
+      'Приоритетная поддержка',
+      'Личный план подготовки',
+      'Доступ к закрытым вебинарам',
     ],
+    btnText: 'Выбрать →',
+    btnClass: 'dark',
   },
 ];
 
-const tickerWords = ['ЛИЦЕНЗИЯ РФ', 'АВТОРСКИЕ МЕТОДИКИ', 'НАУЧНЫЙ ПОДХОД', 'ТОП-ВУЗЫ', 'НАСТАВНИКИ'];
-
 export const PricingPage = () => {
+  const heroRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add(styles.visible);
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    if (heroRef.current) observer.observe(heroRef.current);
+    cardsRef.current.forEach(c => c && observer.observe(c));
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className={styles.page}>
+    <>
+      <main>
+        <section id="стоимость-обучения" className={styles.section}>
+          <div className={styles.container}>
+            <div className={styles.noise} aria-hidden="true"></div>
 
-      {/* Hero */}
-      <section className={styles.hero}>
-        <div className={styles.heroBg} aria-hidden="true" />
-        <div className={styles.heroInner}>
-          <p className={styles.heroLabel}>НАШИ ТАРИФЫ</p>
-          <h1 className={styles.heroHeading}>
-            Три пути<br />к сотне<span className={styles.heroHeadingDot}>.</span>
-          </h1>
-          <p className={styles.heroDesc}>
-            Независимо от вашего текущего уровня, наши программы разработаны как точная
-            система подготовки — эффективная, технологичная и ориентированная на ваш успех.
-          </p>
-        </div>
-      </section>
-
-      {/* Pricing cards */}
-      <main className={styles.pricingSection}>
-        <div className={styles.cards}>
-          {tiers.map((tier, i) => (
-            <div
-              key={i}
-              className={`${styles.card}${tier.cardStyle ? ` ${styles[tier.cardStyle]}` : ''}`}
-            >
-              <div>
-                <span className={`${styles.badge} ${styles[tier.badgeStyle]}`}>
-                  {tier.badge}
-                </span>
-              </div>
-              <p className={styles.tierLabel}>{tier.tierLabel}</p>
-              <h2 className={styles.cardTitle}>{tier.title}</h2>
-              <div className={styles.priceRow}>
-                <span className={styles.priceFrom}>от</span>
-                <span className={styles.price}>{tier.price} ₽</span>
-                <span className={styles.pricePeriod}>/мес</span>
-              </div>
-              <p className={styles.cardDuration}>{tier.duration}</p>
-              <div className={styles.divider} />
-              <ul className={styles.featureList}>
-                {tier.features.map((f) => (
-                  <li key={f} className={styles.featureItem}>
-                    <svg className={styles.featureCheck} width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                      <path d="M20 6 9 17l-5-5" />
-                    </svg>
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <Link to="/register" className={`${styles.cardBtn} ${styles[tier.btnStyle]}`}>
-                Выбрать
-              </Link>
+            <div ref={heroRef} className={`${styles.hero} ${styles.reveal}`}>
+              <p className={styles.eyebrow}>Тарифная сетка</p>
+              <h2 className={styles.heading}>
+                Три пути<br />
+                к <em className={styles.headingEm}>сотне.</em>
+              </h2>
+              <p className={styles.sub}>
+                Выберите интенсивность подготовки. Каждый ученик получает доступ к качественным материалам и поддержке наставников.
+              </p>
             </div>
-          ))}
-        </div>
 
-        {/* Bottom ticker */}
-        <div className={styles.bottomTicker}>
-          <div className={styles.tickerTrack}>
-            {[0, 1, 2].map((g) => (
-              <div key={g} className={styles.tickerGroup}>
-                {tickerWords.map((w, i) => (
-                  <span key={i}>
-                    <span className={styles.tickerWord}>{w}</span>
-                    <span className={styles.tickerSep}>·</span>
-                  </span>
-                ))}
-              </div>
-            ))}
+            <div className={styles.grid}>
+              {tiers.map((t, i) => (
+                <div
+                  key={t.tier}
+                  ref={el => { cardsRef.current[i] = el; }}
+                  className={styles.reveal}
+                  style={{ transitionDelay: `${i * 120}ms` }}
+                >
+                  <div className={`${styles.card} ${t.featured ? styles.cardFeatured : ''}`}>
+                    {t.popular && (
+                      <div className={styles.popularBadgeWrap}>
+                        <span className={styles.popularBadge}>Популярно</span>
+                      </div>
+                    )}
+                    <p className={styles.cardTier}>{t.tier}</p>
+                    <h3 className={styles.cardName}>{t.name}</h3>
+                    <p className={styles.cardSub}>{t.sub}</p>
+                    <div className={styles.priceRow}>
+                        <span className={styles.priceNum}>{t.price}</span>
+                        <span className={styles.priceUnit}>{t.unit}</span>
+                    </div>
+                    <div className={styles.separator}></div>
+                    <ul className={styles.featureList}>
+                      {t.features.map(f => (
+                        <li key={f} className={styles.featureItem}>
+                          <Plus className={styles.featureIcon} aria-hidden="true" />
+                          <span className={styles.featureText}>{f}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <div className={styles.cardFooter}>
+                      <Link to="/register" className={`${styles.btn} ${styles['btn_' + t.btnClass]}`}>
+                          {t.btnText}
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <p className={styles.footnote}>
+              Все тарифы включают доступ к личному кабинету и прогресс-трекеру.
+            </p>
           </div>
-        </div>
+        </section>
       </main>
-
-    </div>
+    </>
   );
 }
