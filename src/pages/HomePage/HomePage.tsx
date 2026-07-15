@@ -1,4 +1,3 @@
-import { Footer } from "../../components/layouts"
 import { Ecosystem, Hero, MentalSupport, Mentors, Pricing, Testimonials, Trial } from "../../components/sections"
 
 
@@ -16,7 +15,6 @@ export const HomePage = () => {
                 <Testimonials />
                 <MentalSupport />
             </main>
-            <Footer />
         </>
     )
 }

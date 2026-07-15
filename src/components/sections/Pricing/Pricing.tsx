@@ -108,7 +108,7 @@ export const Pricing = () => {
                   ))}
                 </ul>
                 <div className={styles.cardBtn}>
-                  <Link to="/page_2" className={`${styles.btn} ${t.featured ? styles.btnFeatured : ''}`}>
+                  <Link to="/pricing" className={`${styles.btn} ${t.featured ? styles.btnFeatured : ''}`}>
                     Выбрать
                   </Link>
                 </div>
