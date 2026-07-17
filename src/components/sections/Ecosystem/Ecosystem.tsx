@@ -1,4 +1,5 @@
 import { Award, Brain, GraduationCap, ShieldCheck, Target, Users } from 'lucide-react';
+import type { JSX } from 'react';
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Ecosystem.module.css';
@@ -16,7 +17,7 @@ const features = [
 const baseWords = ['МАТЕМАТИКА', 'ФИЗИКА', 'ИНФОРМАТИКА', 'РУССКИЙ ЯЗЫК'];
 const tickerWords = [...baseWords, ...baseWords, ...baseWords, ...baseWords];
 
-export const Ecosystem = () => {
+export const Ecosystem = (): JSX.Element => {
   const leftRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<(HTMLLIElement | null)[]>([]);
 

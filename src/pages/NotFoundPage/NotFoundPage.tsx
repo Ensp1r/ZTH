@@ -1,8 +1,10 @@
 import { AlertCircle } from 'lucide-react';
+import type { JSX } from 'react';
 import { Card, CardContent } from '../../components/ui';
 import styles from './NotFoundPage.module.css';
 
-export const NotFoundPage = () => {
+
+export const NotFoundPage = (): JSX.Element => {
   return (
     <div className={styles.container}>
       <Card className={styles.cardWrapper}>

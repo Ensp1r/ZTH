@@ -1,8 +1,11 @@
+import type { JSX } from 'react';
 import PsychoSupport from '../../../assets/images/psychologist_session_support.png';
 import styles from './MentalSupport.module.css';
+import CtaArrowIcon from './ctaArrow.svg?react';
 
 
-export const MentalSupport = () => {
+
+export const MentalSupport = (): JSX.Element => {
   return (
     <section id="ментальная-поддержка" className={styles.section}>
       <div className={styles.inner}>
@@ -72,9 +75,7 @@ export const MentalSupport = () => {
 
             <a href="#" className={styles.cta}>
               Узнать подробнее
-              <svg className={styles.ctaArrow} width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
-              </svg>
+              <CtaArrowIcon className={styles.ctaArrow} />
             </a>
           </div>
         </div>

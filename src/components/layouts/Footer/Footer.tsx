@@ -1,6 +1,8 @@
 import type { JSX } from "react";
 import { Link } from 'react-router-dom';
 import styles from './Footer.module.css';
+import DiagonalArrowIcon from './diagonalArrow.svg?react';
+
 
 const menuLinks = [
   { label: 'Главная', href: '/' },
@@ -24,9 +26,7 @@ export const Footer = (): JSX.Element => {
           <div>
             <Link to="/" className={styles.ctaBtn}>
               Начать обучение
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M7 7h10v10" /><path d="M7 17 17 7" />
-              </svg>
+              <DiagonalArrowIcon />
             </Link>
           </div>
         </div>

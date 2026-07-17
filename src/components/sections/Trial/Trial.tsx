@@ -1,10 +1,12 @@
 import { Phone } from 'lucide-react';
+import type { JSX } from 'react';
 import { useEffect, useRef } from 'react';
 import styles from './Trial.module.css';
 
+
 const marqueeItems = ['7 ДНЕЙ БЕСПЛАТНО', 'ПОДГОТОВКА К ЕГЭ 2025', 'СТАРТ В ЛЮБОЙ МОМЕНТ'];
 
-export const Trial = () => {
+export const Trial = (): JSX.Element => {
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

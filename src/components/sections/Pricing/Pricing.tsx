@@ -1,7 +1,9 @@
 import { Leaf } from 'lucide-react';
+import type { JSX } from 'react';
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Pricing.module.css';
+
 
 const tiers = [
   {
@@ -36,7 +38,7 @@ const tiers = [
 
 const trust = ['ЛИЦЕНЗИЯ РФ', 'АВТОРСКИЕ МЕТОДИКИ', 'НАУЧНЫЙ ПОДХОД', 'ТОП-ВУЗЫ НАСТАВНИКИ'];
 
-export const Pricing = () => {
+export const Pricing = (): JSX.Element => {
   const headerRef = useRef<HTMLDivElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
   const trustRef = useRef<HTMLDivElement>(null);

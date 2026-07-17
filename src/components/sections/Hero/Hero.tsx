@@ -1,6 +1,10 @@
+import type { JSX } from 'react';
 import { Link } from 'react-router-dom';
 import heroImage from '../../../assets/images/student_learning_online.webp';
+import ArrowRightIcon from './arrowRight.svg?react';
 import styles from './Hero.module.css';
+import MortarboardIcon from './mortarboard.svg?react';
+import UnderLineIcon from './underline.svg?react';
 
 
 const tickerItems = [
@@ -17,7 +21,7 @@ const stats = [
   'Родительский контроль',
 ];
 
-export const Hero = () => {
+export const Hero = (): JSX.Element => {
   return (
     <section id="путь-к-сотке" className={styles.hero}>
       <div className={styles.grid}>
@@ -39,25 +43,7 @@ export const Hero = () => {
               <span className={styles.headingLine}>
                 <span className={styles.headingUnderline}>
                   сотне.
-                  <svg
-                    className={styles.underlineSvg}
-                    viewBox="0 0 300 24"
-                    fill="none"
-                    preserveAspectRatio="none"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M2 16 C 60 4, 140 22, 220 10 S 290 14, 298 8"
-                      stroke="hsl(237,90%,51%)"
-                      strokeWidth="5"
-                      strokeLinecap="round"
-                      fill="none"
-                      style={{
-                        strokeDasharray: 600,
-                        strokeDashoffset: 0,
-                      }}
-                    />
-                  </svg>
+                  <UnderLineIcon className={styles.underlineSvg} />
                 </span>
               </span>
             </h1>
@@ -70,9 +56,7 @@ export const Hero = () => {
             <div className={styles.actions}>
               <Link to="/" className={styles.btnPrimary}>
                 Бесплатная неделя
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
-                </svg>
+                <ArrowRightIcon />
               </Link>
               <Link to="/pricing" className={styles.btnOutline}>
                 Выбрать тариф
@@ -102,10 +86,7 @@ export const Hero = () => {
           {/* Status card */}
           <div className={styles.statusCard}>
             <div className={styles.statusHeader}>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="hsl(237,90%,51%)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" />
-                <path d="M22 10v6" /><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" />
-              </svg>
+              <MortarboardIcon />
               <span className={styles.statusHeaderText}>Статус обучения</span>
             </div>
             <div className={styles.progressRow}>

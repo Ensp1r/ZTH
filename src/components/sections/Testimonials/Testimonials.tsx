@@ -1,6 +1,8 @@
 import { Quote, Star } from 'lucide-react';
+import type { JSX } from 'react';
 import { useEffect, useRef } from 'react';
 import styles from './Testimonials.module.css';
+
 
 const reviews = [
   { name: 'Алексей В.', subject: 'Математика, 92 балла', text: 'Благодаря «Из нуля в сотку» я поднял математику с 40 до 92 баллов. Система кланов и постоянные квесты не давали расслабиться, а куратор всегда был на связи.' },
@@ -13,7 +15,7 @@ const reviews = [
 
 const marqueeWords = ['МАТЕМАТИКА', 'ФИЗИКА', 'ИНФОРМАТИКА', 'РУССКИЙ ЯЗЫК', 'ЕГЭ 2024', 'ПОСТУПЛЕНИЕ', 'КУРАТОРЫ', 'КВЕСТЫ', 'СТРИКИ', 'РЕЗУЛЬТАТ'];
 
-export const Testimonials = () => {
+export const Testimonials = (): JSX.Element => {
   const headerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

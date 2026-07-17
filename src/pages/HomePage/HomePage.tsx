@@ -1,9 +1,9 @@
+import type { JSX } from 'react'
 import { Ecosystem, Hero, MentalSupport, Mentors, Pricing, Testimonials, Trial } from "../../components/sections"
 
 
 
-
-export const HomePage = () => {
+export const HomePage = (): JSX.Element => {
     return (
         <>
             <main>

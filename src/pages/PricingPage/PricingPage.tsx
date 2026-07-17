@@ -1,7 +1,9 @@
 import { Plus } from 'lucide-react';
+import type { JSX } from 'react';
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './PricingPage.module.css';
+
 
 const tiers = [
   {
@@ -63,7 +65,7 @@ const tiers = [
   },
 ];
 
-export const PricingPage = () => {
+export const PricingPage = (): JSX.Element => {
   const heroRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
 

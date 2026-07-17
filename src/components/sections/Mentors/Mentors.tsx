@@ -1,10 +1,12 @@
 import { ArrowUpDown, ChevronLeft, ChevronRight, Search } from 'lucide-react';
+import type { JSX } from 'react';
 import { useEffect, useRef } from 'react';
 import imgAlexey from '../../../assets/images/mentor_alexey.webp';
 import imgDmitry from '../../../assets/images/mentor_dmitry.png';
 import imgElena from '../../../assets/images/mentor_elena.webp';
 import imgMaria from '../../../assets/images/mentor_maria.webp';
 import styles from './Mentors.module.css';
+
 
 
 const mentors = [
@@ -14,7 +16,7 @@ const mentors = [
   { id: 'M-002', name: 'Мария Иванова', title: 'ВЫПУСКНИК МФТИ — МЕТОДИСТ', tags: ['Механика', 'Термодинамика'], img: imgMaria },
 ];
 
-export const Mentors = () => {
+export const Mentors = (): JSX.Element => {
   const headingRef = useRef<HTMLHeadingElement>(null);
   const eyebrowRef = useRef<HTMLParagraphElement>(null);
   const subRef = useRef<HTMLParagraphElement>(null);
