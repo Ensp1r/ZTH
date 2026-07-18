@@ -1,43 +1,46 @@
 import type { RegisterFirstStep, RegisterSecondStep } from '../types/register';
 import type { User } from '../types/user';
-import type { LoginFormInputs } from '../utils/validations';
 import { setAccessToken } from './apiClient';
 
 // 1. Функция логина
-export const loginUser = async (data: LoginFormInputs): Promise<{ user: User }> => {
+export const sendLoginSmsCode = async (data: { phone: string }): Promise<{ success: boolean }> => {
+    console.log(data)
     return new Promise((resolve) => {
+        setTimeout(() => resolve({ success: true }), 1000);
+    });
+};
+
+// 2. Проверка СМС при входе (Бэкенд находит юзера по номеру и возвращает его ИМЯ)
+export const verifyLoginSmsCode = async (data: { phone: string; code: string }): Promise<{ user: User }> => {
+    return new Promise((resolve, reject) => {
         setTimeout(() => {
-            const mockToken = 'mock-access-token-123';
-            setAccessToken(mockToken); 
-            
-            // Сохраняем токен
-            localStorage.setItem('temp_mock_token', mockToken); 
-            
-            // Сохраняем введенный email (или любые другие данные), чтобы getMe их "вспомнил"
-            localStorage.setItem('temp_mock_email', data.email); 
-            
-            resolve({ 
-                user: { id: 1, name: 'Вадим', email: data.email, role: 'user' } 
-            });
+            if (data.code === '0000') {
+                const mockToken = 'mock-access-token-login';
+                setAccessToken(mockToken);
+                localStorage.setItem('temp_mock_token', mockToken);
+                
+                resolve({
+                    // Эмулируем, что бэкенд нашел Ивана в базе данных по номеру телефона
+                    user: { id: 1, name: 'Вадим', email: '', role: 'user' }
+                });
+            } else {
+                reject(new Error('Неверный код'));
+            }
         }, 1000);
     });
 };
 
-// 2. Функция проверки пользователя
+// 3. Функция проверки пользователя
 export const getMe = async (): Promise<User> => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             const token = localStorage.getItem('temp_mock_token');
-            
+
             if (token) {
-                // Достаем сохраненный email из локального хранилища. 
-                // Если по какой-то причине его там нет, подставим дефолтный.
-                const savedEmail = localStorage.getItem('temp_mock_email') || 'test@test.ru';
-                
                 resolve({ 
                     id: 1, 
-                    name: 'Вадим', // Имя пока оставляем захардкоженным, так как при логине вводится только email
-                    email: savedEmail, 
+                    name: 'Вадим',
+                    email: '', 
                     role: 'user' 
                 });
             } else {
@@ -61,6 +64,7 @@ export const getMe = async (): Promise<User> => {
 //     }, 1000));
 // };
 
+// 4. Отправка телефона
 export const sendSmsCode = async (data: RegisterFirstStep): Promise<{ success: boolean }> => {
     console.log(data)
     return new Promise((resolve) => {
@@ -69,7 +73,7 @@ export const sendSmsCode = async (data: RegisterFirstStep): Promise<{ success: b
     });
 };
 
-// 2. Проверка СМС и успешная регистрация
+// 5. Проверка СМС и успешная регистрация
 export const verifySmsCode = async (data: RegisterSecondStep): Promise<{ user: User }> => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
@@ -80,7 +84,7 @@ export const verifySmsCode = async (data: RegisterSecondStep): Promise<{ user: U
                 localStorage.setItem('temp_mock_token', mockToken);
                 
                 resolve({
-                    user: { id: 2, name: 'Вадим', email: '', role: 'user' }
+                    user: { id: 2, name: data.name, email: '', role: 'user' }
                 });
             } else {
                 reject(new Error('Неверный код'));

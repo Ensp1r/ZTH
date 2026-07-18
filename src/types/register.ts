@@ -3,6 +3,7 @@ export type RegisterFirstStep = {
 }
 
 export type RegisterSecondStep = {
+    name: string;
     phone: string;
     code: string;
 }

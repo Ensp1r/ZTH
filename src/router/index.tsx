@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import { MainLayout } from "../components/layouts";
-import { HomePage, LoginPage, NotFoundPage, PricingPage, ProfilePage, RegisterPage } from "../pages";
+import { AuthForm } from "../components/ui/AuthForm/AuthForm";
+import { HomePage, NotFoundPage, PricingPage, ProfilePage } from "../pages";
 
 
 export const router = createBrowserRouter(
@@ -11,8 +12,8 @@ export const router = createBrowserRouter(
             { index: true, element: <HomePage />},
             { path: 'pricing', element: <PricingPage />},
             { path: 'profile', element: <ProfilePage />},
-            { path: 'login', element: <LoginPage />},
-            { path: 'register', element: <RegisterPage />},
+            { path: 'login', element: <AuthForm mode="login" />},
+            { path: 'register', element: <AuthForm mode="register" />},
             { path: '*', element: <NotFoundPage />}
         ],
     }],
